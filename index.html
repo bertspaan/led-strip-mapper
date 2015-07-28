@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>LED Strip Mapper</title>
+    <meta charset="utf-8">
+    <meta name="viewport"content="width=device-width,initial-scale=1">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js" charset="utf-8"></script>
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/skeleton.css">
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+
+      header {
+        position: absolute;
+        top: 0;
+        height: 200px;
+        padding: 15px;
+      }
+
+      .content {
+        position: absolute;
+        width: 50%;
+        top: 200px;
+        bottom: 0;
+        overflow: hidden;
+        padding: 15px;
+      }
+
+      #svg-container {
+        left: 0;
+      }
+
+      #mapping-container {
+        right: 0;
+        text
+      }
+
+      #svg-container svg {
+        width: 100%;
+        height: 100%;
+      }
+
+      #mapping {
+        width: 100%;
+        height: 100%;
+        font-family: "Courier New";
+      }
+
+      #pixels {
+        width: 300px;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>LED Strip Mapper</h1>
+      <p>Maps LED strip indices to the x and y coordinates of an SVG path (with x and y between 0 and 1).
+        Resulting JSON mapping array can be used with <a href="https://github.com/bertspaan/wolkd">wolkd</a>, see <a href="https://github.com/bertspaan/led-strip-mapper">GitHub</a> for more information.
+        Map SVG Path to <input type="range" id="pixels" min="0" max="500" value="100"> <span id="num-pixels">100</span> pixels.
+      </p>
+    </header>
+    <div id="svg-container" class="content">
+    </div>
+    <div id="mapping-container" class="content">
+      <textarea id="mapping"></textarea>
+    </div>
+    <script>
+      var svg;
+      var numPixels = 100;
+
+      d3.select('#pixels').on('input', function() {
+        numPixels = d3.select(this).property('value');
+        d3.select('#num-pixels').html(numPixels);
+        updateMapping();
+      });
+
+      function updateMapping() {
+        if (svg) {
+          [].slice.call(svg.children).map(function(element) {
+            var mapping = [];
+            var length = element.getTotalLength();
+
+            for (var i = 0; i < numPixels; i++) {
+              var point = element.getPointAtLength(length / numPixels * i);
+              mapping.push([point.x / svg.clientWidth, point.y / svg.clientHeight]);
+            }
+
+            d3.select('#mapping').html(JSON.stringify(mapping, undefined, 4));
+          });
+        }
+      }
+
+      d3.xml('mapping.svg', function(xml) {
+        var container = document.getElementById('svg-container');
+        container.appendChild(xml.documentElement);
+
+        svg = container.children[0];
+        updateMapping();
+      });
+    </script>
+  </body>
+</html>

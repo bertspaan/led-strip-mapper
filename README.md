@@ -8,7 +8,7 @@ Maps LED strip indices to the x and y coordinates of an SVG path (with x and y b
 
 __With LED Strip Mapper, it's possible to write/play animations on RGB LED strips by using x and y coordinates, instead of just the LED index on the strip.__
 
-Resulting JSON mapping array can be used with <a href="https://github.com/bertspaan/wolkd">wolkd</a>, see <a href="https://github.com/bertspaan/led-strip-mapper">GitHub</a> for more information.
+Resulting JSON mapping array can be used with <a href="https://github.com/bertspaan/wolkd">wolkd</a>, a Node.js server and user interface to control RGB LED strips.
 
 ## Usage
 

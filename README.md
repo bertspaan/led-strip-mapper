@@ -1,5 +1,7 @@
 # LED Strip Mapper
 
+![](https://raw.githubusercontent.com/bertspaan/wolkd/master/public/img/wolk.jpg)
+
 [bertspaan.nl/led-strip-mapper](http://bertspaan.nl/led-strip-mapper)
 
 Maps LED strip indices to the x and y coordinates of an SVG path (with x and y between 0 and 1). LED Strip Mapper expects an SVG file containing a single SVG path, and maps the pixels of a LED strip by placing LED pixels at regular intervals on the SVG path using [`SVGPathElement`](https://developer.mozilla.org/en/docs/Web/API/SVGPathElement)'s `getPointAtLength` function. By default, LED Strip Mapper loads `mapping.svg`, you can edit `index.html` to change this.
@@ -13,7 +15,5 @@ Resulting JSON mapping array can be used with <a href="https://github.com/bertsp
 Clone this repository, create your own SVG file, replace `mapping.svg`, run `python -m SimpleHTTPServer` and point your browser to [http://localhost:8000](http://localhost:8000).
 
 ![](screenshot.png)
-
-![](https://raw.githubusercontent.com/bertspaan/wolkd/master/public/img/wolk.jpg)
 
 ![](https://raw.githubusercontent.com/bertspaan/wolkd/master/public/img/wolkd.png)

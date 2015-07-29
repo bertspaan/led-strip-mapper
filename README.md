@@ -1,6 +1,6 @@
 # LED Strip Mapper
 
-![](https://raw.githubusercontent.com/bertspaan/wolkd/master/public/img/wolk.jpg)
+![](img/wolk.jpg)
 
 [bertspaan.nl/led-strip-mapper](http://bertspaan.nl/led-strip-mapper)
 
@@ -12,8 +12,10 @@ Resulting JSON mapping array can be used with <a href="https://github.com/bertsp
 
 ## Usage
 
-Clone this repository, create your own SVG file, replace `mapping.svg`, run `python -m SimpleHTTPServer` and point your browser to [http://localhost:8000](http://localhost:8000).
+Clone this repository, create your own SVG file, edit or replace `mapping.svg`, run `python -m SimpleHTTPServer` and point your browser to [http://localhost:8000](http://localhost:8000).
 
-![](screenshot.png)
+![](img/led-strip-mapper.png)
 
-![](https://raw.githubusercontent.com/bertspaan/wolkd/master/public/img/wolkd.png)
+![](img/wolkd.png)
+
+![](img/illustrator.png)
